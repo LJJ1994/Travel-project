@@ -51,6 +51,33 @@ npm install vue-awesome-swiper@2.6.7 --save
 
 3.用vuejs中的v-for对轮播图进行循环输出，在返回的data中的swiperOption，利用loop属性，设置为true，可以进行左右循环输出。
 
+4.计算属性
+利用计算属性计算已有的属性值
+computed: {
+      pages () {
+        const pages = []
+        this.iconList.forEach((item,index) => {
+          const page = Math.floor(index/8)
+          if(!pages[page]) {
+            pages[page] = []
+          }
+          pages[page].push(item)
+        })
+        return pages
+      }
+    }
+此例中用一个pages数组判断当前index值是否在当前page页，如果存在当前page页，则返回该值的上取整数；
+如果不存在，则置数组为空，返回数组。
+
+5.css技巧
+
+		overflow: hidden
+    white-space: nowrap
+    text-overflow: ellipsis
+
+利用该组合，如果当前内容溢出，则末尾有显示省略号(...)。
+
+
 GIT合并分支工作流程：
 
 git add .
