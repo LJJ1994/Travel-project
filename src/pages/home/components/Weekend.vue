@@ -3,7 +3,7 @@
 		<div class="title">周末去哪儿</div>
 		<ul>
 			<li class="item border-bottom"
-			 v-for="item in List"
+			 v-for="item in list"
 			  :key="item.id"
 			>
 			  <div class="item-img-wrapper">
@@ -21,30 +21,8 @@
 <script type="text/javascript">
 export default {
 	name: 'HomeWeekend',
-	data () {
-		return {
-			List: [{
-				id: '001',
-				imgUrl: 'http://img1.qunarzz.com/sight/p0/1805/6f/6f885ea8b30c67bca3.water.jpg_150x150_4abd4a25.jpg',
-				title: '水上公园',
-				desc: '中国著名的缩微景区'
-			},{
-				id: '002',
-				imgUrl: 'http://img1.qunarzz.com/sight/p0/1805/6f/6f885ea8b30c67bca3.water.jpg_150x150_4abd4a25.jpg',
-				title: '水上公园',
-				desc: '中国著名的缩微景区'
-			},{
-				id: '003',
-				imgUrl: 'http://img1.qunarzz.com/sight/p0/1805/6f/6f885ea8b30c67bca3.water.jpg_150x150_4abd4a25.jpg',
-				title: '水上公园',
-				desc: '中国著名的缩微景区'
-			},{
-				id: '004',
-				imgUrl: 'http://img1.qunarzz.com/sight/p0/1805/6f/6f885ea8b30c67bca3.water.jpg_150x150_4abd4a25.jpg',
-				title: '水上公园',
-				desc: '中国著名的缩微景区'
-			}]
-		}
+	props: {
+		list: Array
 	}
 }
 </script>

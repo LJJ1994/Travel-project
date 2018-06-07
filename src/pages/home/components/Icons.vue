@@ -1,6 +1,6 @@
 <template>
   <div class="icons">
-    <swiper>
+    <swiper :options="swiperOption">
       <swiper-slide v-for="(page,index) in pages" :key="index">
         <div
           class="icon"
@@ -20,51 +20,20 @@
 <script type="text/javascript">
 export default {
     name: 'HomeIcons',
+    props: {
+      list: Array
+    },
     data () {
       return {
-        iconList: [{
-          id: '001',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-          desc: '景点门票'
-        }, {
-          id: '002',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/8246f27355943202.png',
-          desc: '游乐场'
-        }, {
-          id: '003',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/3e/86314b2af03b7502.png',
-          desc: '水上花园'
-        }, {
-          id: '004',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/b6/37560ece9c62b502.png',
-          desc: '城市观光'
-        }, {
-          id: '005',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png',
-          desc: '一日游'
-        }, {
-          id: '006',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/76/eb88861d78fb9902.png',
-          desc: '动植物园'
-        }, {
-          id: '007',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/27/dac2bcf9added702.png',
-          desc: '海滨海岛'
-        }, {
-          id: '008',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/b6/37560ece9c62b502.png',
-          desc: '东部华侨城'
-        }, {
-          id: '009',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/b6/37560ece9c62b502.png',
-          desc: 'hey'
-        }]
+        swiperOption: {
+          autoplay: false
+        }
       }
     },
     computed: {
       pages () {
         const pages = []
-        this.iconList.forEach((item,index) => {
+        this.list.forEach((item,index) => {
           const page = Math.floor(index/8)
           if(!pages[page]) {
             pages[page] = []

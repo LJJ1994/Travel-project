@@ -2,41 +2,11 @@
 	<div class="recommend">
 		<div class="title">热销推荐</div>
 		<ul>
-			<li class="item border-bottom">
-				<img class="item-img" src="http://img1.qunarzz.com/sight/p0/1805/6f/6f885ea8b30c67bca3.water.jpg_150x150_4abd4a25.jpg">
+			<li class="item border-bottom" v-for="item in list" :key="item.id">
+				<img class="item-img" :src="item.imgUrl">
 				<div class="item-info">
-					<p class="item-title">世界之窗</p>
-					<p class="item-desc">中国著名的缩微景区</p>
-					<button class="item-button">查看详情</button>
-				</div>
-			</li>
-		</ul>
-		<ul>
-			<li class="item border-bottom">
-				<img class="item-img" src="http://img1.qunarzz.com/sight/p0/1805/6f/6f885ea8b30c67bca3.water.jpg_150x150_4abd4a25.jpg">
-				<div class="item-info">
-					<p class="item-title">世界之窗</p>
-					<p class="item-desc">中国著名的缩微景区</p>
-					<button class="item-button">查看详情</button>
-				</div>
-			</li>
-		</ul>
-		<ul>
-			<li class="item border-bottom">
-				<img class="item-img" src="http://img1.qunarzz.com/sight/p0/1805/6f/6f885ea8b30c67bca3.water.jpg_150x150_4abd4a25.jpg">
-				<div class="item-info">
-					<p class="item-title">世界之窗</p>
-					<p class="item-desc">中国著名的缩微景区</p>
-					<button class="item-button">查看详情</button>
-				</div>
-			</li>
-		</ul>
-		<ul>
-			<li class="item border-bottom">
-				<img class="item-img" src="http://img1.qunarzz.com/sight/p0/1805/6f/6f885ea8b30c67bca3.water.jpg_150x150_4abd4a25.jpg">
-				<div class="item-info">
-					<p class="item-title">世界之窗</p>
-					<p class="item-desc">中国著名的缩微景区</p>
+					<p class="item-title">{{ item.title }}</p>
+					<p class="item-desc">{{ item.desc }}</p>
 					<button class="item-button">查看详情</button>
 				</div>
 			</li>
@@ -47,7 +17,10 @@
 
 <script type="text/javascript">
 export default {
-	name: 'HomeRecommend'
+	name: 'HomeRecommend',
+	props: {
+		list: Array
+	}
 }
 </script>
 
