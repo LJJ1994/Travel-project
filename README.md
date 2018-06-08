@@ -166,6 +166,44 @@ methods: {
 	}
 
 
+8.城市路由选择
+
+1.在header首页，使用 <router-link to='/city'> 进行页面跳转
+
+9.搜索框制作
+
+10.城市选择页面列表布局
+
+使用better-scroll实现城市列表的上下滚动
+
+npm install better-scroll --save
+
+使用方法：
+	import BScroll from 'better-scroll'
+	const wrapper = document.querySelector('.wrapper')
+	const scroll = new BScroll(wrapper)
+
+11.页面动态数据渲染
+
+	通过ajax获取后台json数据。
+	json里的cities的类数组，包含着许多对象，一个对象里面包含着多个属性，那么利用v-for对城市列表进行两次循环。如下：
+
+	<div class="area" v-for="(item,key) in cities">
+		<div class="title border-topbottom">{{ key }}</div>
+		<div class="item-list" v-for="innerItem in item" :key="innerItem.id">
+			<div class="item border-bottom">{{ innerItem.name }}</div>
+		</div>
+	</div>
+
+12.城市搜索功能实现
+
+  在搜索框输入关键字时，界面显示搜索内容，并且内容可以滚动显示。
+
+  1.当输入关键字时，如果有对应的城市或者相似的城市，那么列表显示内容；否则显示无法匹配到该内容
+  2.当不输入关键字时，那么搜索列表框关闭
+  3.用v-model实现input输入框和数据的双向绑定。
+
+
 
 
 
