@@ -8,7 +8,7 @@
       输入城市/景点/游玩主题</div>
     <router-link to='/city'>
       <div class="header-right">
-        {{this.city}}<span class="iconfont arrow-icon">&#xe64a;</span>
+        {{this.$store.state.city}}<span class="iconfont arrow-icon">&#xe64a;</span>
       </div>
     </router-link>
   </div>
@@ -16,10 +16,7 @@
 
 <script>
 export default{
-  name: 'HomeHeader',
-  props: {
-    city: String
-  }
+  name: 'HomeHeader'
 }
 </script>
 
@@ -30,8 +27,8 @@ export default{
     background: #00bcd4
     color: #fff
     .header-left
-      width: .64rem
       float: left
+      width: .64rem
       .back-icon
         font-size: .4rem
         text-align: center

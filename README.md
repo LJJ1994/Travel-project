@@ -49,7 +49,9 @@ npm install vue-awesome-swiper@2.6.7 --save
 	.wrapper >>> .swiper-pagination-bullet-active
     background: #fff
 
-3.用vuejs中的v-for对轮播图进行循环输出，在返回的data中的swiperOption，利用loop属性，设置为true，可以进行左右循环输出。
+3.用vuejs中的v-for对轮播图进行循环输出，在返回的data中的swiperOption，利用loop属性，设置为true，可
+
+以进行左右循环输出。
 
 4.计算属性
 
@@ -83,6 +85,7 @@ computed: {
 6.ajax获取首页数据
 
 分析：如果一个大组件里面的每个小组件都发送ajax请求，把对应的数据拿过来，那么会造成网站性能问题。
+
 所以应该在大组件里面发送ajax请求，然后将这些请求发送给所包含的小组件。使用axios必须在大组件引
 
 入axios，如下：
@@ -179,6 +182,7 @@ methods: {
 npm install better-scroll --save
 
 使用方法：
+
 	import BScroll from 'better-scroll'
 	const wrapper = document.querySelector('.wrapper')
 	const scroll = new BScroll(wrapper)
@@ -186,7 +190,10 @@ npm install better-scroll --save
 11.页面动态数据渲染
 
 	通过ajax获取后台json数据。
-	json里的cities的类数组，包含着许多对象，一个对象里面包含着多个属性，那么利用v-for对城市列表进行两次循环。如下：
+
+	json里的cities的类数组，包含着许多对象，一个对象里面包含着多个属性，那么利用v-for对城市列表进行两
+
+  次循环。如下：
 
 	<div class="area" v-for="(item,key) in cities">
 		<div class="title border-topbottom">{{ key }}</div>
@@ -200,9 +207,38 @@ npm install better-scroll --save
   在搜索框输入关键字时，界面显示搜索内容，并且内容可以滚动显示。
 
   1.当输入关键字时，如果有对应的城市或者相似的城市，那么列表显示内容；否则显示无法匹配到该内容
+
   2.当不输入关键字时，那么搜索列表框关闭
+
   3.用v-model实现input输入框和数据的双向绑定。
 
+
+13.Vuex实现首页和城市选择数据共享
+
+实现功能： 点击城市列表里面的城市时，首页header的城市名跟着改变
+
+利用vuex的里的state、actions、mutations实现
+
+另外，当点击城市时，利用vue.router的编程式导航，跳转到指定的页面，如下：
+
+router.push(location, onComplete?, onAbort?)
+
+14.动态路由渲染及详情页制作
+
+问题：加入的router-vue不能正常渲染
+
+解决： 在webpack配置中，加入common.js
+
+export.modules =
+  {
+    alias: {
+        'common': resolve('src/common')
+      }
+  }
+
+15.公共画廊组件制作
+
+重点！！
 
 
 
