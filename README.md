@@ -241,6 +241,64 @@ export.modules =
 重点！！
 
 
+16.实现header界面渐隐渐现效果
+
+碰到的问题：在钩子函数activate中无法监听scroll事件，而在created函数中就可以监听。
+
+另外，可以在监听事件时添加 passive为true。
+
+  methods: {
+    handleScroll () {
+      const top = document.documentElement.scrollTop
+      if(top > 60){
+        this.showAbs = false
+      }else{
+        this.showAbs = true
+      }
+    }
+  },
+  created () {
+    window.addEventListener('touchmove', this.handleScroll)
+  }
+
+  header页在页面向下滚动的时候，逐步显影。代码如下：
+
+  1、绑定一个样式style
+  
+  <div
+     class="header-fixed" 
+     v-show="!showAbs"
+     :style="styleOpacity">  
+      <router-link to='/'>
+        <div class="iconfont header-fixed-back">&#xe624;</div>
+      </router-link>
+      景点详情
+    </div>
+
+    2、返回数据data
+
+    data () {
+    return {
+      showAbs: true,
+      styleOpacity: {
+        opacity: 0
+      }
+    }
+
+    3、逻辑判断
+
+    if(top > 60){
+        let opacity = top / 140
+        opacity = opacity>1 ? 1: opacity  //让opacity恒小于1
+        this.styleOpacity = {opacity}
+        this.showAbs = false
+      }else{
+        this.showAbs = true
+      }
+
+
+
+17.对全局事件进行解绑
 
 
 
