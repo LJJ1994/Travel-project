@@ -1,15 +1,15 @@
 <template>
 	<div>
 		<router-link
-		 tag="div" 
-		 to="/" 
+		 tag="div"
+		 to="/"
 		 class="header-abs"
 		 v-show="showAbs"
 		 >
 			<div class="iconfont header-abs-back">&#xe624;</div>
 		</router-link>
 		<div
-		 class="header-fixed" 
+		 class="header-fixed"
 		 v-show="!showAbs"
 		 :style="styleOpacity">
 			<router-link to='/'>
@@ -33,7 +33,6 @@ export default{
 	},
 	methods: {
 		handleScroll () {
-			console.log('scroll')
 			const top = document.documentElement.scrollTop
 			if(top > 60){
 				let opacity = top / 140
@@ -48,7 +47,7 @@ export default{
 	created () {
 		window.addEventListener('scroll', this.handleScroll)
 	}
-}	
+}
 </script>
 
 <style lang="stylus" scoped>
@@ -69,6 +68,7 @@ export default{
 			margin-left: .15rem
 	.header-fixed
 		position: fixed
+		z-index: 9
 		top: 0
 		left: 0
 		right: 0

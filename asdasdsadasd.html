@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimun-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>dom</title>
+  </head>
+  <body>
+    <div id="myDiv">Right click or Ctrl+click me to get a custom context menu.
+			Click anywhere else to get the default context menu.</div>
+			<ul id="myMenu" style="position:absolute;visibility:hidden;background-color:
+			silver">
+				<li><a href="http://www.nczonline.net">Nicholas’ site</a></li>
+				<li><a href="http://www.wrox.com">Wrox site</a></li>
+				<li><a href="http://www.yahoo.com">Yahoo!</a></li>
+			</ul>
+  </body>
+  <script type="text/javascript">
+  	var EventUtil = {
+  		addHandler: function(element,type,handler){
+  			if(element.addEventListener){
+  				element.addEventListener(type,handler,false)
+  			}else if(element.attachEvent){
+  				element.attachEvent("on"+type,handler)
+  			}else{
+  				element['on'+type]=handler
+  			}
+  		},
+  		getEvent: function(event){
+  			return event ? event : window.event
+  		},
+  		getTarget: function(event){
+  			return event.target ||event.srcElement
+  		},
+  		preventDefault: function(event){
+  			if(event.preventDefault){
+  				event.preventDefault
+  			}else{
+  				event.returnValue = false
+  			}
+  		},
+  		removehandler: function(element,type,handler){
+  			if(element.removeEventListener){
+  				element.removeEventListener(type,handler,false)
+  			}else if(element.detachEvent){
+  				element.detachEvent('on'+type,handler)
+  			}else{
+  				element['on'+type]=null
+  			}
+  		},
+  		stopPropagation: function(event){
+  			if(event.stopPropagation){
+  				event.stopPropagation
+  			}else{
+  				event.cancelBubble = true
+  			}
+  		}
+  	}
+  	EventUtil.addHandler(window, "load", function(event){
+			var div = document.getElementById("myDiv");
+				EventUtil.addHandler(div, "contextmenu", function(event){
+				event = EventUtil.getEvent(event);
+				EventUtil.preventDefault(event);
+			var menu = document.getElementById("myMenu");
+				menu.style.left = event.clientX + "px";
+				menu.style.top = event.clientY + "px";
+				menu.style.visibility = "visible";
+				});
+				EventUtil.addHandler(document, "click", function(event){
+				document.getElementById("myMenu").style.visibility = "hidden";
+				});
+		});
+  // 	var div = document.getElementById("myDiv");
+  // 	EventUtil.addHandler(div,'click',function(event){
+  // 		event = EventUtil.getEvent(event)
+  // 		console.log("Client's coordinates: "+event.clientX+","+event.clientY)
+  // 		console.log("Client's coordinates: "+event.screenX+","+event.screenY)
+  // 	})
+  // 	EventUtil.addHandler(document, "mousewheel", function(event){
+		// 	event = EventUtil.getEvent(event);
+		// 	console.log(event.wheelDelta);
+		// });
+  </script>
+</html>
